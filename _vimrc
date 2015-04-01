@@ -1,3 +1,4 @@
+" original file is dotfile
 set t_Co=256
 set columns=120
 set lines=50
