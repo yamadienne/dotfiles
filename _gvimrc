@@ -1,0 +1,8 @@
+hi clear CursorLine
+" http://qiita.com/s_of_p/items/b7ab2e4a9e484ceb9ee7
+set guifont=Consolas:h10
+set guifontwide=Consolas:h8
+set columns=120
+set lines=50
+hi CursorLineNr ctermbg=4 ctermfg=0 guifg=#dad085
+autocmd GUIEnter * set transparency=240
