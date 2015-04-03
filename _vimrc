@@ -1,10 +1,4 @@
 " original file is dotfile
-set t_Co=256
-set columns=120
-set lines=50
-set guifont=Consolas:h10
-set guifontwide=Consolas:h8
-"set guifontwide=MS_Gothic:h10
 
 " ~/neobundle.log にログを出力する
 let g:neobundle#log_filename = $HOME . "/neobundle.log"
@@ -176,8 +170,13 @@ nnoremap sc :<C-u>Scratch<CR>
 inoremap <silent> jj <ESC>
 "nnoremap 0 $
 "nnoremap 1 0
-set backupdir=$VIM/vim74/tmp/backup
-set undodir=$VIM/vim74/tmp/undo
+if has('win32') || has('win64')
+ set backupdir=$VIM/vim74/tmp/backup
+ set undodir=$VIM/vim74/tmp/undo
+elseif has('mac')
+ set backupdir=$VIM/tmp/backup
+ set undodir=$VIM/tmp/undo
+endif
 set shiftwidth=4
 set softtabstop=0
 set tabstop=4
@@ -226,8 +225,6 @@ function! ToggleGuiOptions(flag_option)
 endfunction
 
 nnoremap <F2> :call ToggleGuiOptions('m')<CR>
-
-
 
 " 個別のタブの表示設定をします
 function! GuiTabLabel()
@@ -349,16 +346,22 @@ let g:lightline = {
       \   'fileencoding': 'MyFileencoding',
       \   'mode': 'MyMode',
       \ },
-      \ 'separator': { 'left': "", 'right': "" },
-      \ 'subseparator': { 'left': '', 'right': '' }
+      \ 'separator': { 'left': "<U+E0B0>", 'right': "<U+E0B2>" },
+      \ 'subseparator': { 'left': '<U+E0B1>', 'right': '<U+E0B3>' }
       \ }
+let g:lightline.separator = { 'left': "\u2b80", 'right': "\u2b82"}
+let g:lightline.subseparator = { 'left': "\u2b81", 'right': "\u2b83"}
+
 
 function! MyModified()
   return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
 endfunction
 
 function! MyReadonly()
-  return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? '' : ''
+  if has('win32') || has('win64')
+    return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? '<U+E0A2>' : ''
+  elseif has('mac')
+    return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? "¥u2b64" : ''
 endfunction
 
 function! MyFilename()
@@ -373,8 +376,11 @@ endfunction
 function! MyFugitive()
   if &ft !~? 'vimfiler\|gundo' && exists("*fugitive#head")
     let _ = fugitive#head()
-    return strlen(_) ? ' '._ : ''
-  endif
+    if has('win32') || has('win32')
+      return strlen(_) ? '<U+E0A0> '._ : ''
+    elseif has('mac')
+      return strlen(_) ? "¥u2b60 "._ : ''
+    endif
   return ''
 endfunction
 
