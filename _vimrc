@@ -109,6 +109,9 @@ noremap <C-N> :Unite -buffer-name=file file<CR>
 " 最近使ったファイルの一覧
 noremap <C-Z> :Unite file_mru<CR>
  
+" バッファを削除 
+au FileType unite nnoremap <silent> <buffer> <expr> <C-d> unite#do_action('delete')
+au FileType unite inoremap <silent> <buffer> <expr> <C-d> unite#do_action('delete')
 " ウィンドウをタブで開く
 au FileType unite nnoremap <silent> <buffer> <expr> <C-t> unite#do_action('tabopen')
 au FileType unite inoremap <silent> <buffer> <expr> <C-t> unite#do_action('tabopen')
@@ -169,6 +172,7 @@ nnoremap sv :<C-u>vs<CR>
 nnoremap so <C-w>o
 nnoremap fo :<C-u>tabnew 
 nnoremap fe :<C-u>e 
+nnoremap sc :<C-u>Scratch<CR>
 inoremap <silent> jj <ESC>
 "nnoremap 0 $
 "nnoremap 1 0
@@ -354,7 +358,7 @@ function! MyModified()
 endfunction
 
 function! MyReadonly()
-  return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? '⭤' : ''
+  return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? '' : ''
 endfunction
 
 function! MyFilename()
