@@ -1,9 +1,5 @@
-" original file is dotfile
 set t_Co=256
-set columns=120
-set lines=50
-set guifont=Consolas:h10
-set guifontwide=Consolas:h8
+
 "set guifontwide=MS_Gothic:h10
 
 " ~/neobundle.log にログを出力する
@@ -109,9 +105,6 @@ noremap <C-N> :Unite -buffer-name=file file<CR>
 " 最近使ったファイルの一覧
 noremap <C-Z> :Unite file_mru<CR>
  
-" バッファを削除 
-au FileType unite nnoremap <silent> <buffer> <expr> <C-d> unite#do_action('delete')
-au FileType unite inoremap <silent> <buffer> <expr> <C-d> unite#do_action('delete')
 " ウィンドウをタブで開く
 au FileType unite nnoremap <silent> <buffer> <expr> <C-t> unite#do_action('tabopen')
 au FileType unite inoremap <silent> <buffer> <expr> <C-t> unite#do_action('tabopen')
@@ -172,7 +165,6 @@ nnoremap sv :<C-u>vs<CR>
 nnoremap so <C-w>o
 nnoremap fo :<C-u>tabnew 
 nnoremap fe :<C-u>e 
-nnoremap sc :<C-u>Scratch<CR>
 inoremap <silent> jj <ESC>
 "nnoremap 0 $
 "nnoremap 1 0
@@ -358,7 +350,7 @@ function! MyModified()
 endfunction
 
 function! MyReadonly()
-  return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? '' : ''
+  return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? '⭤' : ''
 endfunction
 
 function! MyFilename()
@@ -406,12 +398,14 @@ if isdirectory(s:local_session_directory)
   let g:session_autosave = 'yes'
   " 引数なしでvimを起動した時にsession保存ディレクトリのdefault.vimを開く
   let g:session_autoload = 'yes'
-  " 60分間に1回自動保存
-  let g:session_autosave_periodic = 60
+  " 1分間に1回自動保存
+  let g:session_autosave_periodic = 1
 else
   let g:session_autosave = 'no'
   let g:session_autoload = 'no'
 endif
 unlet s:local_session_directory
+
+
 
 
