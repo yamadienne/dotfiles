@@ -406,7 +406,7 @@ if isdirectory(s:local_session_directory)
   let g:session_autosave = 'yes'
   " 引数なしでvimを起動した時にsession保存ディレクトリのdefault.vimを開く
   let g:session_autoload = 'yes'
-  " 1分間に1回自動保存
+  " 60分間に1回自動保存
   let g:session_autosave_periodic = 60
 else
   let g:session_autosave = 'no'
