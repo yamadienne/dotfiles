@@ -344,13 +344,19 @@ let g:lightline = {
       \   'fileformat': 'MyFileformat',
       \   'filetype': 'MyFiletype',
       \   'fileencoding': 'MyFileencoding',
-      \   'mode': 'MyMode',
-      \ },
-      \ 'separator': { 'left': "<U+E0B0>", 'right': "<U+E0B2>" },
-      \ 'subseparator': { 'left': '<U+E0B1>', 'right': '<U+E0B3>' }
+      \   'mode': 'MyMode'
       \ }
-let g:lightline.separator = { 'left': "\u2b80", 'right': "\u2b82"}
-let g:lightline.subseparator = { 'left': "\u2b81", 'right': "\u2b83"}
+      \ }
+if has('linux')
+    let g:lightline.separator = { 'left': "\ue0b0" , 'right': "\ue0b2"}
+    let g:lightline.subseparator = { 'left': "\ue0b1", 'right': "\ue0b3"}
+elseif has('win32') || has('win64')
+    let g:lightline.separator = { 'left': "", 'right': ""}
+    let g:lightline.subseparator = { 'left': "", 'right': ""}
+elseif has('mac')
+    let g:lightline.separator = { 'left': "\u2b80", 'right': "\u2b82"}
+    let g:lightline.subseparator = { 'left': "\u2b81", 'right': "\u2b83"}
+endif
 
 
 function! MyModified()
@@ -359,7 +365,7 @@ endfunction
 
 function! MyReadonly()
   if has('win32') || has('win64')
-    return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? '<U+E0A2>' : ''
+    return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? "\ue0a2" : ''
   elseif has('mac')
     return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? "¥u2b64" : ''
 endfunction
@@ -377,7 +383,7 @@ function! MyFugitive()
   if &ft !~? 'vimfiler\|gundo' && exists("*fugitive#head")
     let _ = fugitive#head()
     if has('win32') || has('win32')
-      return strlen(_) ? '<U+E0A0> '._ : ''
+      return strlen(_) ? "\ue0a0 "._ : ''
     elseif has('mac')
       return strlen(_) ? "¥u2b60 "._ : ''
     endif
