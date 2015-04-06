@@ -385,7 +385,7 @@ function! MyFugitive()
     if has('win32') || has('win32')
       return strlen(_) ? "\ue0a0 "._ : ''
     elseif has('mac')
-      return strlen(_) ? "¥u2b60 "._ : ''
+      return strlen(_) ? "\u2b60 "._ : ''
     endif
   return ''
 endfunction

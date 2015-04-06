@@ -1,9 +1,11 @@
+colorscheme jellybeans
 hi clear CursorLine
 " http://qiita.com/s_of_p/items/b7ab2e4a9e484ceb9ee7
 if has('win32')
   set guifont=Consolas:h10
   set guifontwide=Consolas:h8
 elseif has('mac')
+"defaults write org.vim.MacVim.plist AppleFontSmoothing -int 1
   set guifont=Osaka-Mono:h14
   "set guifontwide=MS_Gothic:h14
   set guifontwide=Ricty:h14
@@ -16,4 +18,3 @@ if has('win32')
 elseif has('mac')
   autocmd GUIEnter * set transparency=1
 endif
-colorscheme jellybeans
