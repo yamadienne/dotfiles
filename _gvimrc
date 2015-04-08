@@ -5,6 +5,7 @@ if has('win32') || has('win64')
   set guifont=Consolas:h10
   set guifontwide=MS_Gothic:h11
 elseif has('mac')
+"defaults write org.vim.MacVim.plist AppleFontSmoothing -int 1
   set guifont=Osaka-Mono:h14
   "set guifontwide=MS_Gothic:h14
   set guifontwide=Ricty:h14
