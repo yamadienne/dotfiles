@@ -144,7 +144,7 @@ endif
 set guioptions+=a " クリップボードへのコピーを有効化
 set number " 行番号の表示
  "ctrl-j にてノーマルモードに移行
-imap <C-J> <esc> 
+imap <silent> <C-J> <esc>
 nnoremap <silent> <c-j> :<C-u>nohlsearch<CR>
 set noimdisable
 nnoremap s <Nop>
@@ -192,6 +192,7 @@ hi clear CursorLine
 set list
 set listchars=eol:\ ,trail:>,tab:>-
 set clipboard+=unnamed
+set tw=0 " 自動改行抑止
 
 " GuiOptionのトグル用
 function! ToggleGuiOptions(flag_option)

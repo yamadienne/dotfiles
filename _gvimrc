@@ -1,8 +1,9 @@
+colorscheme jellybeans
 hi clear CursorLine
 " http://qiita.com/s_of_p/items/b7ab2e4a9e484ceb9ee7
-if has('win32')
+if has('win32') || has('win64')
   set guifont=Consolas:h10
-  set guifontwide=Consolas:h8
+  set guifontwide=MS_Gothic:h11
 elseif has('mac')
   set guifont=Osaka-Mono:h14
   "set guifontwide=MS_Gothic:h14
@@ -12,8 +13,7 @@ set columns=120
 set lines=50
 hi CursorLineNr ctermbg=4 ctermfg=0 guifg=#dad085
 if has('win32')
-  autocmd GUIEnter * set transparency=240
+  autocmd GUIEnter * set transparency=300
 elseif has('mac')
   autocmd GUIEnter * set transparency=1
 endif
-colorscheme jellybeans
