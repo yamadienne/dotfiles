@@ -102,7 +102,8 @@ noremap <C-P> :Unite buffer<CR>
 noremap <C-N> :Unite -buffer-name=file file<CR>
 " 最近使ったファイルの一覧
 noremap <C-Z> :Unite file_mru<CR>
- 
+noremap <C-Y> :Unite -buffer-name=register register<CR>
+
 " バッファを削除 
 au FileType unite nnoremap <silent> <buffer> <expr> <C-d> unite#do_action('delete')
 au FileType unite inoremap <silent> <buffer> <expr> <C-d> unite#do_action('delete')
