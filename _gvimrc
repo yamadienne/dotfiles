@@ -18,3 +18,5 @@ if has('win32')
 elseif has('mac')
   autocmd GUIEnter * set transparency=1
 endif
+autocmd BufRead * set tw=0 " 自動改行抑止
+
