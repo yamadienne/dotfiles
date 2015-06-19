@@ -14,7 +14,6 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
 
-call neobundle#end()
  
 " ここから NeoBundle でプラグインを設定します
  
@@ -31,7 +30,10 @@ NeoBundle 'thinca/vim-singleton'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'airblade/vim-gitgutter'
+" NeoBundle 'airblade/vim-gitgutter'
+
+call neobundle#end()
+
 
 filetype plugin indent on       " restore filetype
 
@@ -180,6 +182,7 @@ inoremap <silent> jj <ESC>
 if has('win32') || has('win64')
  set backupdir=$VIM/vim74/tmp/backup
  set undodir=$VIM/vim74/tmp/undo
+ set directory=C:\Users\YAMADA~1\AppData\Local\Temp,c:\tmp,c:\temp
 elseif has('mac')
  set backupdir=$VIM/tmp/backup
  set undodir=$VIM/tmp/undo
